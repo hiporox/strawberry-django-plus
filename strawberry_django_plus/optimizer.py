@@ -383,7 +383,7 @@ class OptimizerStore:
             if isinstance(p, str):
                 prefetch_related.append(f"{prefix}{p}")
             elif isinstance(p, Prefetch):
-                p.add_prefix(prefix)
+                p.add_prefix(prefix.strip("__"))
                 prefetch_related.append(p)
             else:  # pragma:nocover
                 raise AssertionError(f"Unexpected prefetch type {repr(p)}")
